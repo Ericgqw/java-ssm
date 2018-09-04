@@ -1,0 +1,89 @@
+package com.datebase;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import com.mysql.jdbc.PreparedStatement;
+
+
+public class getdatas {
+	 private static String dirverName;
+	    private static String url;
+	    private static String username;
+	    private static String password;
+	    private static String sql1;
+	    private static String sql2;
+	    private static String sql3;
+//	    利用静态块i，在类加载的时候就被执行
+	    static{
+	        try {
+//	            用流读入properties配置文件
+	            InputStream inputStream = getdatas.class.getClassLoader()
+	                    .getResourceAsStream("com/properties/database.properties");
+	            Properties properties = new Properties();
+//	            从输入字节流读取属性列表（键和元素对）
+	           
+	            properties.load(inputStream);
+//	            用此属性列表中指定的键搜索属性，获取驱动，url，username，password
+	            dirverName = properties.getProperty("driverName").trim();
+	            url = properties.getProperty("url").trim();
+	            username = properties.getProperty("username").trim();
+	            password = properties.getProperty("password").trim();
+	            sql1=properties.getProperty("sql1").trim();
+	            sql2=properties.getProperty("sql2").trim();
+	            sql3=properties.getProperty("sql3").trim();
+//	            加载驱动
+	            Class.forName(dirverName);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	 
+	    }
+	 
+//	    获取数据库连接
+	    public static Connection getConnection() {
+	        Connection conn=null;
+			try {
+	            conn=DriverManager.getConnection(url, username, password);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return conn;
+	    }
+	    public static void execSql(String sql){
+	    	Connection conn = getConnection();
+	    	PreparedStatement pstmt;
+	    	 try {
+	    	        pstmt = (PreparedStatement)conn.prepareStatement(sql);
+	    	        ResultSet rs = pstmt.executeQuery();
+	    	        int col = rs.getMetaData().getColumnCount();
+	    	        System.out.println("============================");
+	    	        while (rs.next()) {
+	    	            for (int i = 1; i <= col; i++) {
+	    	                System.out.print(rs.getString(i) + "\t");
+	    	                if ((i == 2) && (rs.getString(i).length() < 8)) {
+	    	                    System.out.print("\t");
+	    	                }
+	    	             }
+	    	            System.out.println("");
+	    	        }
+	    	            System.out.println("============================");
+	    	    } catch (SQLException e) {
+	    	        e.printStackTrace();
+	    	    }
+	     }
+	//测试
+	    public static void main(String[] args) {
+	       execSql(sql1);
+	       execSql(sql2);
+	       execSql(sql3);
+	    }
+	}
+

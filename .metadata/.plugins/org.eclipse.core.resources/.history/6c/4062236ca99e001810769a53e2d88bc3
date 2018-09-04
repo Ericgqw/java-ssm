@@ -1,0 +1,11 @@
+package com.kms.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+public class test_controller {
+
+ @RequestMapping("/index")
+ public void test(){
+	 System.out.println("success");
+ }
+}

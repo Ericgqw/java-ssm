@@ -1,0 +1,12 @@
+package com.database.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class PageController {
+    @RequestMapping(value="kanban")
+    public String kanban(){
+    	return "kanban";
+    }
+}

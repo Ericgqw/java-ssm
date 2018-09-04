@@ -1,0 +1,27 @@
+/*    */ package com.anyrt.report.dao.impl;
+/*    */ 
+/*    */ import com.anyrt.report.model.arg.QueryArg;
+/*    */ import java.sql.ResultSet;
+/*    */ import org.springframework.jdbc.core.RowMapper;
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ public class QueryArgMapper
+/*    */   implements RowMapper<QueryArg>
+/*    */ {
+/*    */   public QueryArg mapRow(ResultSet rs, int arg1)
+/*    */   {
+/*    */     QueryArg localQueryArg;
+/* 15 */     (localQueryArg = new QueryArg()).setRptId(rs.getString("RPT_ID"));
+/* 16 */     localQueryArg.setFormName(rs.getString("FORM_NAME"));
+/* 17 */     localQueryArg.setUserName(rs.getString("USER_NAME"));
+/* 18 */     localQueryArg.setSaveVal(rs.getString("SAVE_VAL"));
+/* 19 */     return localQueryArg;
+/*    */   }
+/*    */ }
+
+
+/* Location:              C:\Program Files (x86)\AnyReport\apache-tomcat-8.5.13\webapps\dmp\WEB-INF\lib\anyrt.jar!\com\anyrt\report\dao\impl\QueryArgMapper.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       0.7.1
+ */

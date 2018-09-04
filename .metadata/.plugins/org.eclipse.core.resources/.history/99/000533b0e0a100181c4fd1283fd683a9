@@ -1,0 +1,12 @@
+driverName=com.mysql.jdbc.Driver
+url=jdbc:mysql://localhost:3306/rd-auto_machine   
+username=root
+password=it12345678
+#sql1-------->看板基本信息
+sql1=select * from plan_autod
+#sql2-------->看板柱状图     
+sql2=select * from plan_autosum
+#sql3-------->看板折线图
+sql3=select * from plan_ng
+#sql4-------->看板列表
+sql4=select * from plan_prd

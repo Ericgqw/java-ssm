@@ -1,0 +1,58 @@
+package com.kms.controller;
+
+import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSONObject;
+import com.kms.model.user;
+import com.kms.service.UserService;
+
+@Controller
+public class LoginController {
+	
+	 @Autowired
+	    @Qualifier("UserService")        
+	    private UserService getdataService;
+	
+   @RequestMapping(value="login")
+   @ResponseBody
+   public JSONObject login(HttpServletRequest request,HttpServletResponse response){
+	String workid=request.getParameter("WORKID");
+	String password=request.getParameter("PASSWORD");
+	List<user> user=getdataService.getone(workid,password);
+	if(user==null || (user!=null && user.size()==0)){
+	   JSONObject jsonobject=new JSONObject();
+	   jsonobject.put("data","fail");
+	   return jsonobject;
+	}else{
+	   JSONObject jsonobject=new JSONObject();
+	   jsonobject.put("data", "success");
+	   Cookie cookie=new Cookie("isLogin","yes");
+	   cookie.setMaxAge(-1);    //会话级cookie，关闭浏览器失效 
+	   cookie.setPath("/");
+	   response.addCookie(cookie);
+	   return jsonobject;
+	}
+   }
+   @RequestMapping(value="insert_user")
+     public ModelAndView insert_user(HttpServletRequest req){
+		String workid=req.getParameter("WORKID");
+		String name=req.getParameter("NAME");
+		String password=req.getParameter("PASSWORD");
+		getdataService.insertUser(workid, name, password);
+	    ModelAndView mv=new ModelAndView();
+	    mv.setViewName("login");
+	   return mv;
+   }
+}

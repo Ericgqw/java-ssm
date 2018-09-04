@@ -1,0 +1,30 @@
+package com.database.controller;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.json.JSONException;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.datebase.getdatas;
+
+@Controller
+public class chartdataController {
+   	    @ResponseBody
+	  	@RequestMapping(value = "chart_data" , method = RequestMethod.POST)
+	  	public  String  getbasic(HttpServletRequest req) throws SQLException, JSONException{
+	  	String sql=req.getParameter("sql").trim(); 
+	  	String db_ip=req.getParameter("db_ip").trim();
+	  	String db_name=req.getParameter("db_name").trim();
+	  	System.out.println(sql);
+   		getdatas data=new getdatas();
+	  	ResultSet result=data.execSql(sql);
+   		String data1=data.resultSetToJson(result);
+	  	return data1;		
+	 } 	    
+}

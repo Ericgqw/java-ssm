@@ -1,0 +1,31 @@
+package com.database.controller;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSONObject;
+import com.database.*;
+import com.datebase.getdatas;
+
+
+
+@Controller
+public class chartdataController {
+   	 @ResponseBody
+	  	@RequestMapping(value = "chart_data" , method = RequestMethod.POST)
+	  	public  JSONObject  getbasic(HttpServletRequest req){
+	  	String sql=req.getParameter("sql");   
+   		getdatas data=new getdatas();
+	  	ResultSet result=data.execSql(sql);
+   		JSONObject jsonObject = new JSONObject();
+	  	//jsonObject.put();
+	  	return jsonObject;		
+	 } 	    
+}

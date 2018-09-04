@@ -1,0 +1,60 @@
+package datebase;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Properties;
+
+
+public class getdatas {
+	 private static String dirverName;
+	    private static String url;
+	    private static String username;
+	    private static String password;
+//	    利用静态块i，在类加载的时候就被执行
+	    static{
+	        try {
+//	            用流读入properties配置文件
+	            InputStream inputStream = getdatas.class.getClassLoader()
+	                    .getResourceAsStream("datebase.properties");
+	            Properties properties = new Properties();
+//	            从输入字节流读取属性列表（键和元素对）
+	            properties.load(inputStream);
+//	            用此属性列表中指定的键搜索属性，获取驱动，url，username，password
+	            dirverName = properties.getProperty("driverName");
+	            url = properties.getProperty("url");
+	            username = properties.getProperty("username");
+	            password = properties.getProperty("password");
+	            System.out.println(dirverName);
+	            System.out.println(url);
+	            System.out.println(username);
+	            System.out.println(password);
+//	            加载驱动
+	            Class.forName(dirverName);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	 
+	    }
+	 
+//	    获取数据库连接
+	    public static Connection getConnection() {
+	        Connection conn;
+			try {
+	            conn=DriverManager.getConnection(url, username, password);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return conn;
+	    }
+	    
+	//测试
+	    public static void main(String[] args) {
+	       getdatas.getConnection();
+	    }
+	}
+

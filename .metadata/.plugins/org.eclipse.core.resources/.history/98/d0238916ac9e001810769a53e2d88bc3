@@ -1,0 +1,16 @@
+db.driver =com.mysql.jdbc.Driver
+db.url = jdbc:mysql://127.0.0.1:3306/manager?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+db.user= root
+db.password=root
+initialSize=1
+minIdle=1
+maxActive=20
+maxWait=60000í
+timeBetweenEvictionRunsMillis=60000í
+minEvictableIdleTimeMillis=300000
+validationQuery =SELECT 'x'
+testWhileIdle=true
+testOnBorrow=false
+testOnReturn=falseè
+poolPreparedStatements=true
+maxPoolPreparedStatementPerConnectionSize=20

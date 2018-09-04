@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kms.mapper.Plan_AutoSumMapper">
+  <resultMap id="BaseResultMap" type="com.kms.model.Plan_AutoSum">
+    <result column="PLANqty" jdbcType="VARCHAR" property="planqty" />
+    <result column="TARGETqty" jdbcType="VARCHAR" property="targetqty" />
+    <result column="MACHqty" jdbcType="VARCHAR" property="machqty" />
+    <result column="DONEqty" jdbcType="VARCHAR" property="doneqty" />
+    <result column="NGqty" jdbcType="VARCHAR" property="ngqty" />
+    <result column="Remainqty" jdbcType="VARCHAR" property="remainqty" />
+    <result column="DoneRate" jdbcType="VARCHAR" property="donerate" />
+    <result column="RemainRate" jdbcType="VARCHAR" property="remainrate" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    PLANqty, TARGETqty, MACHqty, DONEqty, NGqty, Remainqty, DoneRate, RemainRate
+  </sql>
+  <select id="selectByExample" parameterType="com.kms.model.Plan_AutoSumExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from Plan_AutoSum
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.kms.model.Plan_AutoSumExample">
+    delete from Plan_AutoSum
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.kms.model.Plan_AutoSum">
+    insert into Plan_AutoSum (PLANqty, TARGETqty, MACHqty, 
+      DONEqty, NGqty, Remainqty, 
+      DoneRate, RemainRate)
+    values (#{planqty,jdbcType=VARCHAR}, #{targetqty,jdbcType=VARCHAR}, #{machqty,jdbcType=VARCHAR}, 
+      #{doneqty,jdbcType=VARCHAR}, #{ngqty,jdbcType=VARCHAR}, #{remainqty,jdbcType=VARCHAR}, 
+      #{donerate,jdbcType=VARCHAR}, #{remainrate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.kms.model.Plan_AutoSum">
+    insert into Plan_AutoSum
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="planqty != null">
+        PLANqty,
+      </if>
+      <if test="targetqty != null">
+        TARGETqty,
+      </if>
+      <if test="machqty != null">
+        MACHqty,
+      </if>
+      <if test="doneqty != null">
+        DONEqty,
+      </if>
+      <if test="ngqty != null">
+        NGqty,
+      </if>
+      <if test="remainqty != null">
+        Remainqty,
+      </if>
+      <if test="donerate != null">
+        DoneRate,
+      </if>
+      <if test="remainrate != null">
+        RemainRate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="planqty != null">
+        #{planqty,jdbcType=VARCHAR},
+      </if>
+      <if test="targetqty != null">
+        #{targetqty,jdbcType=VARCHAR},
+      </if>
+      <if test="machqty != null">
+        #{machqty,jdbcType=VARCHAR},
+      </if>
+      <if test="doneqty != null">
+        #{doneqty,jdbcType=VARCHAR},
+      </if>
+      <if test="ngqty != null">
+        #{ngqty,jdbcType=VARCHAR},
+      </if>
+      <if test="remainqty != null">
+        #{remainqty,jdbcType=VARCHAR},
+      </if>
+      <if test="donerate != null">
+        #{donerate,jdbcType=VARCHAR},
+      </if>
+      <if test="remainrate != null">
+        #{remainrate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.kms.model.Plan_AutoSumExample" resultType="java.lang.Long">
+    select count(*) from Plan_AutoSum
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update Plan_AutoSum
+    <set>
+      <if test="record.planqty != null">
+        PLANqty = #{record.planqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.targetqty != null">
+        TARGETqty = #{record.targetqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.machqty != null">
+        MACHqty = #{record.machqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doneqty != null">
+        DONEqty = #{record.doneqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ngqty != null">
+        NGqty = #{record.ngqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remainqty != null">
+        Remainqty = #{record.remainqty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.donerate != null">
+        DoneRate = #{record.donerate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remainrate != null">
+        RemainRate = #{record.remainrate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update Plan_AutoSum
+    set PLANqty = #{record.planqty,jdbcType=VARCHAR},
+      TARGETqty = #{record.targetqty,jdbcType=VARCHAR},
+      MACHqty = #{record.machqty,jdbcType=VARCHAR},
+      DONEqty = #{record.doneqty,jdbcType=VARCHAR},
+      NGqty = #{record.ngqty,jdbcType=VARCHAR},
+      Remainqty = #{record.remainqty,jdbcType=VARCHAR},
+      DoneRate = #{record.donerate,jdbcType=VARCHAR},
+      RemainRate = #{record.remainrate,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

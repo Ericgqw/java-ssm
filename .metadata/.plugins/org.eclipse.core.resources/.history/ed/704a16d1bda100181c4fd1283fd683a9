@@ -1,0 +1,23 @@
+package com.database.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
+
+@Controller
+public class chartdataController {
+   	 @ResponseBody
+	  	@RequestMapping(value = "chart_data" , method = RequestMethod.POST)
+	  	public  JSONObject  getbasic(HttpServletRequest req){
+	  	    JSONObject jsonObject = new JSONObject();
+	  		jsonObject.put("plan_AutoSum",plan_AutoSum);
+	  		return jsonObject;		
+	  		} 	    

@@ -1,0 +1,17 @@
+db.driver =com.mysql.jdbc.Driver
+db.url = jdbc:mysql://127.0.0.1:3306/rd-auto_machine?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+db.url1=jdbc:mysql://127.0.0.1:3306/koide?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+db.user= root
+db.password=it12345678
+initialSize=1
+minIdle=1
+maxActive=20
+maxWait=60000
+timeBetweenEvictionRunsMillis=60000
+minEvictableIdleTimeMillis=300000
+validationQuery =SELECT 'x'
+testWhileIdle=true
+testOnBorrow=false
+testOnReturn=false
+poolPreparedStatements=true
+maxPoolPreparedStatementPerConnectionSize=20

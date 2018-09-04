@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <title id="maintitle">生产监控看板</title>
+    
+<link href="../kanban/css/bootstrap.min.css" rel="stylesheet" />
+<link href="../../kanban/css/iconfont/iconfont.css" rel="stylesheet">
+<link href="../../kanban/css/bootstrap-select.css" rel="stylesheet">
+<link href="../../kanban/css/metroStyle/metroStyle.css" rel="stylesheet">
+<link href="../../kanban/css/green.css" rel="stylesheet">
+<link href="../../kanban/css/webuploader.css" rel="stylesheet">
+<link href="../../kanban/css/simplebar.css" rel="stylesheet">
+<link href="../../kanban/css/style.css" rel="stylesheet">
+    
+<script src="../../kanban/js/jquery-1.11.3.min.js"></script>
+<script src="../../kanban/js/bootstrap.min.js"></script>
+<script src="../../kanban/js/jquery.bootpag.min.js"></script>
+<script src="../../kanban/js/layer/laydate/laydate.js"></script>
+<script src="../../kanban/js/bootstrap-select.min.js"></script>
+<script src="../../kanban/js/jquery.ztree.all-3.5.min.js"></script>
+<script src="../../kanban/js/icheck.min.js"></script>
+<script src="../../kanban/js/layer/layer.js"></script>
+<script src="../../kanban/js/simplebar.js"></script>
+<script src="../../kanban/js/dms.js"></script>
+<script src="../../kanban/js/summernote.min.js"></script>
+<script src="../../kanban/js/swfobject.js"></script>
+<script src="../../kanban/js/svg.js"></script>
+<script src="../../kanban/js/base64.min.js"></script>
+<!-- <script src="../../kanban/js/echarts.js"></script>  -->
+<script src="../../kanban/js/echarts-wordcloud.min.js"></script>
+<script src="../../kanban/js/customed.js"></script>
+<script src="../../kanban/js/china.js"></script>
+<script src="../../kanban/js/world.js"></script>
+<script src="../../kanban/js/chart.adaptor.js"></script>
+<script src="../../kanban/js/monitor.js"></script>  
+<script src="../../kanban/js/user/ajax_data.js"></script>
+<script src="../../kanban/js/user/echarts/chart_bar.js"></script>
+<script src="../../kanban/js/user/echarts/chart_line.js"></script>
+<script src="../../kanban/js/anyrt.js"></script>
+<script type="text/javascript" src="../../kanban/js/user/update.js"></script>
+<script>
+   var title="1生产监控看板1";
+   $("#maintitle").text(title);
+   $("#name").text(title);
+   var db_port=3306;
+   //chart_list赋值
+   var sql_list="select * from plan_prd";
+   var list_db_ip="localhost";
+   var list_db_name="rd-auto_machine";
+   var list_rows=5; 
+  //basic赋值
+  var sql_basic="select * from plan_autosum";
+  var basic_db_ip="localhost";
+  var basic_db_name="rd-auto_machine";
+</script>	
+</head>
+<body style="background:#031727; padding: 0 1%;"  >
+ <div id="contentDiv"   >  
+		    <table id="tg" class="tg" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%"> <!-- 自适应修改处!-->
+			<colgroup>
+			<col ></col>
+			<col ></col>
+			<col ></col>
+			</colgroup>
+			<tr style="height:41px;" oh="41">
+			<td id="0_0" rowspan="1" colspan="3" style="font-weight:bold;font-size:18px;color:#eeeeee;text-align:center;vertical-align:top;" ><span id="time">2018-08-03</span><span id="name" >装配机看板</span></td>
+			</tr>
+			<br>
+			<tr style="height:155px;" oh="155">
+			<td id="1_0" rowspan="1" colspan="3" style="vertical-align:top;position:relative;" linkageId="A2" >
+			<div rv="6">
+			<table class="tg" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%; " >    <!-- 自适应修改处!-->
+			<colgroup>
+			<col  style="width:95px; "  ow="95"></col>
+			<col  style="width:113px" ow="113"></col>
+			<col  style="width:15px" ow="15"></col>
+			<col  style="width:116px" ow="116"></col>
+			<col  style="width:93px" ow="93"></col>
+			<col  style="width:15px" ow="15"></col>
+			<col  style="width:119px" ow="119"></col>
+			<col  style="width:83px" ow="83"></col>
+			<col  style="width:15px" ow="15"></col>
+			<col  style="width:92px" ow="92"></col>
+			<col  style="width:91px" ow="91"></col>
+			</colgroup>
+			<tr style="height:41px;width: 100%;" oh="41">
+			<td id="1_0_0_0" rowspan="1" colspan="2"  style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >100000</td>
+			<td id="1_0_0_2" rowspan="1" colspan="1"   style="padding-left:10px;vertical-align:top;" ></td>
+			<td id="1_0_0_3" rowspan="1" colspan="2"   style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >59492</td>
+			<td id="1_0_0_5" rowspan="1" colspan="1"   style="vertical-align:top;" ></td>
+			<td id="1_0_0_6" rowspan="1" colspan="2"   style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >40508</td>
+			<td id="1_0_0_8" rowspan="1" colspan="1"   style="vertical-align:top;" ></td>
+			<td id="1_0_0_9" rowspan="1" colspan="2"  style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >5</td></tr>
+			<tr style="height:39px;" oh="39">
+			<td id="1_0_1_0" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >计划完成数量</td>
+			<td id="1_0_1_2" rowspan="1" colspan="1" style="vertical-align:middle;text-align:center;" ></td>
+			<td id="1_0_1_3" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >当日目标数量</td>
+			<td id="1_0_1_5" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_1_6" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >已完成数量</td>
+			<td id="1_0_1_8" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_1_9" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >未完成数量</td></tr>
+			<tr style="height:8px;" oh="8">
+			<td id="1_0_2_0" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_1" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_2" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_3" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_4" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_5" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_6" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_7" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_8" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_9" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_2_10" rowspan="1" colspan="1" style="vertical-align:top;" ></td></tr>
+			<tr style="height:42px;" oh="42">
+			<td id="1_0_3_0" rowspan="1" colspan="2" style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >4167</td>
+			<td id="1_0_3_2" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_3_3" rowspan="1" colspan="2" style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >59.49%</td>
+			<td id="1_0_3_5" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_3_6" rowspan="1" colspan="2" style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >40.51%</td>
+			<td id="1_0_3_8" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_3_9" rowspan="1" colspan="2" style="font-size:28px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >5</td></tr>
+			<tr style="height:37px;" oh="37">
+			<td id="1_0_4_0" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >不良品数量</td>
+			<td id="1_0_4_2" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_4_3" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >开机数</td>
+			<td id="1_0_4_5" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_4_6" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >产品完成率</td>
+			<td id="1_0_4_8" rowspan="1" colspan="1" style="vertical-align:top;" ></td>
+			<td id="1_0_4_9" rowspan="1" colspan="2" style="font-size:16px;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >产品未完成率</td>
+			</tr>
+			</table>
+			</div>
+			</td>
+			</tr>
+				</table> 		
+			<div style=" margin-top: 30px;position: relative;">
+				<div style="display: inline-block;width: 50.9%;">
+					<div id="chart_3_0" style="height:240px">
+						  <script>
+                            $(function(){                           
+                     
+                            var db_name="rd-auto_machine";
+                            var db_ip="localhost";							
+  							var sql_sentence="select * from plan_autod";
+							 var object={
+							     "append_string1":"PLANqty",
+								 "append_string2":"DONEqty",
+								 "append_string3":"MACH"
+							 }
+							function refresh(){
+							var temp=draw_chart(sql_sentence,object,db_ip,db_name);
+							var barchart=chart_bar(temp[0],temp[1],temp[2]);
+							barchart.destroy();
+							}
+							refresh();
+						    setInterval(refresh,5000)
+						})
+						  </script>          						
+					</div>
+					<div id="chart_5_0" style="margin-top: 18px;">
+				            <script>
+						     $(function(){ 
+							var db_name="rd-auto_machine";
+                            var db_ip="localhost";	
+                            var sql_sentence="select * from plan_ng";
+                            var object={
+                                 "appending_string1":"NGqty"
+							} 	
+                            function refresh(){
+							var temp=draw_chart(sql_sentence,object,db_ip,db_name);
+                            chart_line(temp[0]);	
+                           	}	
+							refresh();
+							setInterval(refresh,120000)
+						})							
+						   </script>  
+					</div>
+				</div>			
+			<div id="pbox" class='pbox' style='height:502px;background-color:#062236; display: inline-block; width: 47.4%;position: absolute;right: 0;overflow-y:hidden' rv='6'>
+			<table class="tg" id="data" cellspacing="0" cellpadding="0" style="border-collapse:collapse;width:100%; " > 
+			<colgroup>
+			<col  style="width:90px" ow="90"></col>
+			<col  style="width:107px" ow="107"></col>
+			<col  style="width:99px" ow="99"></col>
+			<col  style="width:90px" ow="90"></col>
+			<col  style="width:90px" ow="90"></col>
+			</colgroup>
+			<thead id="head">
+			<tr style="height:35px;" oh="35">
+			<td id="3_2_0_0" rowspan="1" colspan="2" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;" >&nbsp;&nbsp;&nbsp;项目工序生产进度</td>
+			<td id="3_2_0_2" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:top;" ></td>
+			<td id="3_2_0_3" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:top;" ></td>
+            </tr>
+			<tr style="height:25px;" oh="25">
+			<td id="3_2_1_0" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >自动机序号</td>
+			<td id="3_2_1_1" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >产品型号</td>
+			<td id="3_2_1_2" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >计划完成数量</td>
+			<td id="3_2_1_3" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >实际完成数量</td>		
+			<td id="3_2_1_4" rowspan="1" colspan="1" style="font-weight:bold;background:#062236;color:#fafafa;vertical-align:middle;text-align:center;" >剩余数量</td>				
+			</tr>
+			 </thead>
+			 <tbody id="body">
+			</tbody>
+			<script>		
+			  chart_list();	             			  
+		 </script>
+			</table>
+			</div>
+			</div>  
+		</div>
+		
+</body>
+</html>

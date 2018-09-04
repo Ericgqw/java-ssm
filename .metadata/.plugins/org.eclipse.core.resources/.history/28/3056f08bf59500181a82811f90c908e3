@@ -1,0 +1,41 @@
+/*    */ package com.anyrt.a;
+/*    */ 
+/*    */ import java.io.FilterReader;
+/*    */ import java.io.Reader;
+/*    */ import org.apache.xmlbeans.impl.common.XMLChar;
+/*    */ 
+/*    */ public final class a
+/*    */   extends FilterReader
+/*    */ {
+/*    */   public a(Reader paramReader)
+/*    */   {
+/* 12 */     super(paramReader);
+/*    */   }
+/*    */   
+/*    */   public final int read(char[] cbuf, int off, int len)
+/*    */   {
+/*    */     int i;
+/* 18 */     if ((i = super.read(cbuf, off, len)) == -1) {
+/* 19 */       return -1;
+/*    */     }
+/* 21 */     int j = off - 1;
+/*    */     
+/* 23 */     for (int k = off; k < off + i; k++) {
+/* 24 */       if (XMLChar.isValid(cbuf[k])) {
+/* 25 */         j++;
+/*    */         
+/*    */ 
+/*    */ 
+/* 29 */         if (j < k)
+/* 30 */           cbuf[j] = cbuf[k];
+/*    */       }
+/*    */     }
+/* 33 */     return j - off + 1;
+/*    */   }
+/*    */ }
+
+
+/* Location:              C:\Program Files (x86)\AnyReport\apache-tomcat-8.5.13\webapps\dmp\WEB-INF\lib\anyrt.jar!\com\anyrt\a\a.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       0.7.1
+ */

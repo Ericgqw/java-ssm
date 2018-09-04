@@ -1,0 +1,5 @@
+package com.kms.factory;
+
+public class DynamicDataSourceHolder {
+
+}

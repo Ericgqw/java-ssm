@@ -1,0 +1,5 @@
+package com.datebase;
+
+public interface ResultSetHandler {
+
+}
